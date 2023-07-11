@@ -15,7 +15,8 @@ dotenv.config();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors({
-    origin: "https://chat-app-frontend-lilac.vercel.app"
+    origin: "https://chat-app-frontend-lilac.vercel.app",
+    credentials: true
 }));
 
 
@@ -29,8 +30,8 @@ const io = require("socket.io")(server, {
     cors: {
         origin: "https://chat-app-frontend-lilac.vercel.app",
         // origin: "http://localhost:3000",
-        methods: ["GET", "POST"],
-        credentials: true
+        methods: ["GET", "POST"]
+        
 
     }
 })

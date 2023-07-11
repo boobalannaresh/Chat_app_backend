@@ -14,7 +14,9 @@ connectDB();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: "https://chat-app-frontend-lilac.vercel.app"
+}));
 
 app.use("/users", userRoutes);
 
@@ -102,7 +104,7 @@ io.on('connection', (socket) => {
 })
 
 app.get('/', (req, res) => {
-    res.send({message: "Welcome to Chat-app"});
+    res.send({ message: "Welcome to Chat-app" });
 })
 
 

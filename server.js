@@ -29,7 +29,9 @@ const io = require("socket.io")(server, {
     cors: {
         origin: "https://chat-app-frontend-lilac.vercel.app",
         // origin: "http://localhost:3000",
-        // methods: ["GET", "POST"]
+        methods: ["GET", "POST"],
+        credentials: true
+
     }
 })
 

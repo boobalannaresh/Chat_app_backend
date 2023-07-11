@@ -101,7 +101,9 @@ io.on('connection', (socket) => {
 
 })
 
-
+app.get('/', (req, res) => {
+    res.send({message: "Welcome to Chat-app"});
+})
 
 
 

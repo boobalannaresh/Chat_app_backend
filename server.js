@@ -14,12 +14,14 @@ dotenv.config();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: "https://chat-app-frontend-lilac.vercel.app"
+}));
 
 app.use("/users", userRoutes);
 connectDB();
 
-const server = require('https').createServer(app);
+const server = require('http').createServer(app);
 const PORT = process.env.PORT;
 const io = require("socket.io")(server, {
     cors: {

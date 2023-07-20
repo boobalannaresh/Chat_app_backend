@@ -2,12 +2,13 @@ const express = require("express");
 const app = express();
 const dotenv = require('dotenv');
 const connectDB = require('./connection');
+const http = require('http');
 const userRoutes = require('./routes/userRoutes');
 const rooms = ["general", "tech", "finance", "crypto"];
 const cors = require("cors");
 const Message = require("./models/Message");
 const User = require("./models/User");
-
+const PORT = process.env.PORT;
 dotenv.config();
 
 
@@ -24,8 +25,7 @@ app.use(cors({
 app.use("/users", userRoutes);
 connectDB();
 
-const server = require('http').createServer(app);
-const PORT = process.env.PORT;
+const server = http.createServer(app);
 const io = require("socket.io")(server, {
     cors: {
         origin: "https://chat-app-frontend-lilac.vercel.app",

@@ -8,30 +8,25 @@ const rooms = ["general", "tech", "finance", "crypto"];
 const cors = require("cors");
 const Message = require("./models/Message");
 const User = require("./models/User");
-const PORT = process.env.PORT;
 dotenv.config();
 
 
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors({
-    origin: "https://chat-app-frontend-lilac.vercel.app",
-    credentials: true
-}));
-
+app.use(cors());
 
 
 app.use("/users", userRoutes);
 connectDB();
 
 const server = http.createServer(app);
+const PORT = process.env.PORT;
 const io = require("socket.io")(server, {
     cors: {
-        origin: "https://chat-app-frontend-lilac.vercel.app",
-        // origin: "http://localhost:3000",
+        // origin: "https://chat-app-frontend-lilac.vercel.app"
+        origin: "http://localhost:3000",
         methods: ["GET", "POST"]
-        
 
     }
 })
